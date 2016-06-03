@@ -11,28 +11,29 @@ class AboutRegularExpressions < EdgeCase::Koan
   end
 
   def test_a_failed_match_returns_nil
-    assert_equal __, "some matching content"[/missing/]
+    assert_equal nil, "some matching content"[/missing/]
   end
 
   # ------------------------------------------------------------------
 
   def test_question_mark_means_optional
-    assert_equal __, "abbcccddddeeeee"[/ab?/]
-    assert_equal __, "abbcccddddeeeee"[/az?/]
+    assert_equal "ab", "abbcccddddeeeee"[/ab?/]
+    assert_equal "a", "abbcccddddeeeee"[/az?/]
   end
 
   def test_plus_means_one_or_more
-    assert_equal __, "abbcccddddeeeee"[/bc+/]
+    assert_equal "bccc", "abbcccddddeeeee"[/bc+/]
   end
 
   def test_asterisk_means_zero_or_more
-    assert_equal __, "abbcccddddeeeee"[/ab*/]
-    assert_equal __, "abbcccddddeeeee"[/az*/]
-    assert_equal __, "abbcccddddeeeee"[/z*/]
+    assert_equal "abb", "abbcccddddeeeee"[/ab*/]
+    assert_equal "a", "abbcccddddeeeee"[/az*/]
+    assert_equal "", "abbcccddddeeeee"[/z*/]
 
     # THINK ABOUT IT:
     #
     # When would * fail to match?
+    # * would never fail to match
   end
 
   # THINK ABOUT IT:
@@ -40,7 +41,8 @@ class AboutRegularExpressions < EdgeCase::Koan
   # We say that the repetition operators above are "greedy."
   #
   # Why?
-
+# Repetition is greedy by default: as many occurrences as possible are matched while still allowing overall match to succeed.
+# Lazy matching makes minimal amout of matches necessary for overall success....Greedy metacharacters can be made lazy by following it with a ?
   # ------------------------------------------------------------------
 
   def test_the_left_most_match_wins
