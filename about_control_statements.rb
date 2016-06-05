@@ -79,7 +79,7 @@ class AboutControlStatements < EdgeCase::Koan
       result = result * i
       i += 1
     end
-    assert_equal __, result
+    assert_equal 3628800, result
   end
 
   def test_break_statement
@@ -90,7 +90,7 @@ class AboutControlStatements < EdgeCase::Koan
       result = result * i
       i += 1
     end
-    assert_equal __, result
+    assert_equal 3628800, result
   end
 
   def test_next_statement
@@ -101,7 +101,7 @@ class AboutControlStatements < EdgeCase::Koan
       next if (i % 2) == 0
       result << i
     end
-    assert_equal __, result
+    assert_equal [1,3,5,7,9], result
   end
 
   def test_for_statement
@@ -110,7 +110,7 @@ class AboutControlStatements < EdgeCase::Koan
     for item in array
       result << item.upcase
     end
-    assert_equal [__, __, __], result
+    assert_equal ["FISH", "AND", "CHIPS"], result
   end
 
 end
