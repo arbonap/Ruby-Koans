@@ -54,8 +54,8 @@ class AboutBlocks < EdgeCase::Koan
   end
 
   def test_methods_can_see_if_they_have_been_called_with_a_block
-    assert_equal __, yield_tester { :with_block }
-    assert_equal __, yield_tester
+    assert_equal :with_block, yield_tester { :with_block }
+    assert_equal :no_block, yield_tester
   end
 
   # ------------------------------------------------------------------
@@ -63,15 +63,15 @@ class AboutBlocks < EdgeCase::Koan
   def test_block_can_effect_variables_in_the_code_where_they_are_created
     value = :initial_value
     method_with_block { value = :modified_in_a_block }
-    assert_equal __, value
+    assert_equal :modified_in_a_block, value
   end
 
   def test_blocks_can_be_assigned_to_variables_and_called_explicitly
     add_one = lambda { |n| n + 1 }
-    assert_equal __, add_one.call(10)
+    assert_equal 11, add_one.call(10)
 
     # Alternative calling sequence
-    assert_equal __, add_one[10]
+    assert_equal 11, add_one[10]
   end
 
   def test_stand_alone_blocks_can_be_passed_to_methods_expecting_blocks
